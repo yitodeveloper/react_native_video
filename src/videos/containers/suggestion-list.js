@@ -40,7 +40,7 @@ class SuggestionList extends Component{
         // ]
         return(
             <Layout
-                title="Recomendado para ti"
+                title="Recomendados para ti"
             >
                 <FlatList
                     keyExtractor={this.keyExtractor}
