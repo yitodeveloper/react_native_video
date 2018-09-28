@@ -6,7 +6,11 @@ const Layout = props => (
         <View style={styles.video}>
             {props.video}
         </View>
-        
+        <View style={styles.overlay}>
+            {props.loading &&
+             props.loader}
+        </View>
+        {props.controls}
     </View>
 )
 
@@ -21,6 +25,15 @@ const styles = StyleSheet.create({
         top:0,
         bottom:0,
         backgroundColor: 0,
+    },
+    overlay:{
+        position: 'absolute',
+        left:0,
+        top: 0,
+        bottom: 0,
+        right: 0,
+        justifyContent: 'center',
+        alignItems: 'center',
     }
 })
 export default Layout;
