@@ -1,29 +1,43 @@
-import React from 'react';
-import { TouchableHighlight, TouchableOpacity, TouchableWithoutFeedback, Text, StyleSheet } from 'react-native'
+import React from 'react'
+import { TouchableHighlight, TouchableOpacity, TouchableWithoutFeedback, Text, StyleSheet, Platform } from 'react-native'
+import Icon from '../../icons/components/icon'
 
-const PlayPause = (props) => (
+const PlayPause = (props) => {
     
-    <TouchableHighlight
-        onPress={props.onPress}
-        style={styles.container}
-        underlayColor="red"
-        hitSlop={{
-            left:5,
-            top:5,
-            bottom: 5,
-            right:5,
-        }}
-    >
-        {
-            props.paused ?
-            <Text style={styles.button}>Play</Text>
-            :
-            <Text style={styles.button}>Pause</Text>
-        }
-        
-        
-    </TouchableHighlight>
-)
+    const playIcon = Platform.select({
+        ios: 'ios-play',
+        android: 'md-play',
+      });
+    
+      const pauseIcon = Platform.select({
+        ios: 'ios-pause',
+        android: 'md-pause',
+      });
+
+      return (
+        <TouchableHighlight
+            onPress={props.onPress}
+            style={styles.container}
+            underlayColor="rgba(0,0,0,0)"
+            hitSlop={{
+                left:5,
+                top:5,
+                bottom: 5,
+                right:5,
+            }}
+        >
+            {
+                props.paused ?
+                <Icon iconName={playIcon}/>
+                :
+                <Icon iconName={pauseIcon}/>
+            }
+            
+            
+        </TouchableHighlight>
+      )
+    
+}
 
 const styles = StyleSheet.create({
     button: {
@@ -33,14 +47,13 @@ const styles = StyleSheet.create({
       },
       container: {
         justifyContent: 'center',
-        paddingHorizontal: 10,
-        height: 25,
+        paddingLeft: 10,
+        paddingVertical: 10,
+        height: 40,
         marginRight: 10,
         marginVertical: 5,
-        borderWidth: 1,
-        borderRadius: 10,
-        borderColor: 'white',
-        backgroundColor: 'gray',
+        borderRadius: 50,
       }
 })
+
 export default PlayPause;

@@ -14,6 +14,7 @@ const Category = props => (
             {props.genres?props.genres[0]:"nada"}
         </Text>
     </ImageBackground>
+    
 )
 
 const styles = {
