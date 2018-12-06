@@ -6,7 +6,8 @@ import storage from 'redux-persist/lib/storage'
 // const store = createStore(reducer,{})
 const persistConfig = {
     key: 'root',
-    storage
+    storage,
+    blacklist: ['selectedMovie']
 }
 
 const persistedReducer = persistReducer(persistConfig, reducer)
